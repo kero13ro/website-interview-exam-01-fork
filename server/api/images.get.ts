@@ -7,16 +7,19 @@ export default defineEventHandler((event) => {
   let height = Number(query?.height || query?.width) || 1000;
 
   const gen = () => {
+    const randomId = Math.round(Math.random() * 1000)
     return {
       title: faker.internet.emoji(),
-      src: faker.image.urlPicsumPhotos({
-        width,
-        height,
-      }),
-      placeholder: faker.image.urlPicsumPhotos({
-        width: 10,
-        height: 10,
-      }),
+      // src: faker.image.urlPicsumPhotos({
+      //   width,
+      //   height,
+      // }),
+      // placeholder: faker.image.urlPicsumPhotos({
+      //   width: 10,
+      //   height: 10,
+      // }),
+      src: `https://picsum.photos/seed/${randomId}/${width}/${height}`,
+      placeholder: `https://picsum.photos/seed/${randomId}/10/10`,
     };
   };
 
