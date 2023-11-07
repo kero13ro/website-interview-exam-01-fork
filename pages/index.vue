@@ -23,7 +23,6 @@ const renderList = ref<{
 }[]>([])
 
 watch(data, () => {
-  console.log(data.value!.images.length)
   renderList.value.push(...data.value!.images)
 }, {
   immediate: true
@@ -45,7 +44,7 @@ useInfiniteScroll(
   <div>pending: {{ pending }}</div>
   <div class="container" ref="listWrap">
     <div class="container__item" v-for="(img, idx) in renderList" :key="idx">
-      <p>{{ img.title }}</p>
+      <p>{{ img.title }} - {{ idx }}</p>
       <LazyImg :src="img.src" :placeholder="img.placeholder" />
     </div>
 
