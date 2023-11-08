@@ -12,8 +12,10 @@ export default defineEventHandler((event) => {
     return {
       id,
       title: faker.internet.emoji(),
-      // 為了讓圖片相同，將 faker.image.urlPicsumPhotos 改為 picsum.photos/seed/
+      // 為了讓 blur, 正規圖片相同，將 faker.image.urlPicsumPhotos 改為 picsum.photos/seed/
       src: `https://picsum.photos/seed/${id}/${width}/${height}.webp`,
+
+      // @@todo 可改寫為 base64 減少 API request 次數
       placeholder: `https://picsum.photos/seed/${id}/10/10.webp`,
     }
   })
