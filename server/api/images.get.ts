@@ -6,26 +6,21 @@ export default defineEventHandler((event) => {
   let width = Number(query?.width) || 1000;
   let height = Number(query?.height || query?.width) || 1000;
 
-  const gen = () => {
-    const randomId = Math.round(Math.random() * 1000)
+  
+  let images = Array.from(Array(600)).map((_, index) => {
+    const id = index + 1
     return {
+      id,
       title: faker.internet.emoji(),
-      // src: faker.image.urlPicsumPhotos({
-      //   width,
-      //   height,
-      // }),
-      // placeholder: faker.image.urlPicsumPhotos({
-      //   width: 10,
-      //   height: 10,
-      // }),
-      src: `https://picsum.photos/seed/${randomId}/${width}/${height}`,
-      placeholder: `https://picsum.photos/seed/${randomId}/10/10`,
-    };
-  };
+      // 為了讓圖片相同，將 faker.image.urlPicsumPhotos 改為 picsum.photos/seed/
+      src: `https://picsum.photos/seed/${id}/${width}/${height}.webp`,
+      placeholder: `https://picsum.photos/seed/${id}/10/10.webp`,
+    }
+  })
 
-  let images = faker.helpers.multiple(gen, { count: 600 });
-  const offset = Number(query?.offset) || 0;
+  // @@todo 若大量資料時，slice 寫法可優化
   const limit = Number(query?.limit) || 600;
+  const offset = (Number(query?.offset) || 0) * limit;
   images = images.slice(offset, offset + limit);
 
   return {

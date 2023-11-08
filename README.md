@@ -30,16 +30,3 @@ Start the development server on `http://localhost:3000`:
 ```bash
 pnpm run dev
 ```
-
-<!-- <NuxtImg
-  sizes="100vw sm:50vw md:400px"
-  format="webp" src="/nuxt-icon.png"
-/> -->
-
-loading="lazy"
-fetchpriority="low"
-https://web.dev/articles/fetch-priority?hl=zh-tw
-
-
-Responsive images
-https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images

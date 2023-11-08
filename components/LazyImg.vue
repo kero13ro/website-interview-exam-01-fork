@@ -6,19 +6,18 @@ const props = defineProps<{
   placeholder: string
 }>()
 
-const isMounded = ref(false)
-const { isLoading, error } = useImage({ src: props.src }, { delay: 3000 })
-onMounted(() => {
-  isMounded.value = true
+const { isLoading, error } = useImage({ src: props.src }, {
+   delay: 1000
 })
 </script>
-
+<!-- 若正規圖片尚未加載，使用 模糊縮圖 -->
+<!-- 若模糊縮圖尚未加載，使用 骨架動畫 -->
 <template>
   <div class="LazyImg skeleton">
     <transition name="fade">
       <img v-show="isLoading" :src="placeholder" class="blurImg" />
     </transition>
-    <div v-if="error" class="error">alt</div>
+    <div v-if="error" class="error">alt title</div>
     <img :src="src" loading="lazy" fetchpriority="low" />
   </div>
 </template>

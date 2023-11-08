@@ -1,8 +1,6 @@
 <template>
   <div>
-    <ClientOnly>
-      <NuxtPage />
-    </ClientOnly>
+    <NuxtPage />
   </div>
 </template>
 
@@ -14,7 +12,7 @@ body {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.6s;
+  transition: opacity 0.8s;
 }
 
 .fade-enter-from,
